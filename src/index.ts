@@ -1,6 +1,5 @@
 import deobfuscate from './deobfuscate';
 import decrypt from './decrypt';
-import { enc } from 'crypto-js';
 
 const fileSelector = document.getElementById('encrypted-file-selector');
 const resultBox = document.getElementById('decryption-result');
@@ -67,8 +66,10 @@ async function readAndDecryptFile(file: File) {
         }, 
     noDice);
 
+    // if NONE of the keys worked
     if(decryptedContents === noDice) {
-        throw new Error('No key was able to decrypt the file. Perhaps you have a file that is not supported.');
+        // error out
+        throw new Error('Decryption failed. Maybe it\'s encrypted in a way that is\'nt yet supported.');
     }
 
     return decryptedContents;
@@ -77,14 +78,17 @@ async function readAndDecryptFile(file: File) {
 fileSelector.onchange = (event: Event) => {
     const target = event.target as HTMLInputElement;
 
-    resultBox.style.color = 'black';
+    resultBox.style.color = 'var(--foreground)';
 
+    // decrypt the file
     readAndDecryptFile(target.files[0])
         .then((contents: string) => resultBox.innerText = contents)
         .catch((err: Error) => {
-            resultBox.style.color = 'red';
+            // show the error
+            resultBox.style.color = 'var(--foreground-error)';
             resultBox.innerText = err.message;
         });
 
+    // show the decrypting... text
     resultBox.innerText = 'Decrypting...';
 }

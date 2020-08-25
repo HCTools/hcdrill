@@ -1,0 +1,25 @@
+body {
+    --foreground: #1DE9B6;
+    --foreground-error: #FF1744;
+
+    background: #263238;
+    color: var(--foreground);
+
+    font-family: monospace;
+}
+
+a:visited {
+    color: #AA00FF;
+}
+
+#decryption-result {
+    display: block; 
+    max-width: 50vw;
+    overflow-wrap: break-word;
+}
+
+@media(max-width: 1024px) {
+    #decryption-result {
+        max-width: unset;
+    }
+}
