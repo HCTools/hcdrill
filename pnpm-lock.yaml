@@ -1,5 +1,9 @@
+dependencies:
+  '@types/crypto-js': 3.1.47
+  crypto-js: 4.0.0
 devDependencies:
   parcel-bundler: 1.12.4
+  typescript: 4.0.2
 lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.10.4:
@@ -1046,6 +1050,10 @@ packages:
       node: '>= 6.0.0'
     resolution:
       integrity: sha512-USSjRAAQYsZFlv43FUPdD+jEGML5/8oLF0rUzPQTtK4q9kvaXr49F5ZplyLz5lox78cLZ0TxN2bIDQ1xhOkulQ==
+  /@types/crypto-js/3.1.47:
+    dev: false
+    resolution:
+      integrity: sha512-eI6gvpcGHLk3dAuHYnRCAjX+41gMv1nz/VP55wAe5HtmAKDOoPSfr3f6vkMc08ov1S0NsjvUBxDtHHxqQY1LGA==
   /@types/q/1.5.4:
     dev: true
     resolution:
@@ -1782,6 +1790,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-fz4spIh+znjO2VjL+IdhEpRJ3YN6sMzITSBijk6FK2UvTqruSQW+/cCZTSNsMiZNvUeq0CqurF+dAbyiGOY6Wg==
+  /crypto-js/4.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-bzHZN8Pn+gS7DQA6n+iUmBfl0hO5DJq++QP3U6uTucDtk/0iGpXd/Gg7CGR0p8tJhofJyaKoWBuJI4eAO00BBg==
   /css-color-names/0.0.4:
     dev: true
     resolution:
@@ -5035,6 +5047,13 @@ packages:
     dev: true
     resolution:
       integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+  /typescript/4.0.2:
+    dev: true
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-e4ERvRV2wb+rRZ/IQeb3jm2VxBsirQLpQhdxplZ2MEzGvDkkMmPglecnNDfSUBivMjP93vRbngYYDQqQ/78bcQ==
   /uncss/0.17.3:
     dependencies:
       commander: 2.20.3
@@ -5290,4 +5309,7 @@ packages:
     resolution:
       integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 specifiers:
+  '@types/crypto-js': ^3.1.47
+  crypto-js: ^4.0.0
   parcel-bundler: ^1.12.4
+  typescript: ^4.0.2
