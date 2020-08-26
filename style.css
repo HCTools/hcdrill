@@ -8,6 +8,12 @@ body {
     font-family: monospace;
 }
 
+main {
+    margin: 0 auto;
+    margin-top: 5em;
+    width: 50%;
+}
+
 a:visited {
     color: #AA00FF;
 }
@@ -21,5 +27,12 @@ a:visited {
 @media(max-width: 1024px) {
     #decryption-result {
         max-width: unset;
+    }
+}
+
+@media(max-width: 750px) {
+    main {
+        margin: 0;
+        width: 100%;
     }
 }
