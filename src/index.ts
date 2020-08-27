@@ -6,7 +6,15 @@ const resultBox = document.getElementById('decryption-result');
 
 const keyList: [string, boolean][] = [
     ['hc_reborn_tester', true],
+    ['hc_reborn_tester_9', true],
+    ['hc_reborn_tester_8', true],
+    ['hc_reborn_tester_7', true],
+    ['hc_reborn_tester_6', true],
     ['hc_reborn_tester_5', true],
+    ['hc_reborn_tester_4', true],
+    ['hc_reborn_tester_3', true],
+    ['hc_reborn_tester_2', true],
+    ['hc_reborn_tester_1', true],
     ['hc_reborn_for_you', true],
     ['hc_reborn_7', true],
     ['hc_reborn_6', true],
