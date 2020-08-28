@@ -18,6 +18,10 @@ a:visited {
     color: #AA00FF;
 }
 
+.control-group {
+    margin: 1em 1em 1em 0;
+}
+
 #decryption-result {
     display: block; 
     max-width: 50vw;

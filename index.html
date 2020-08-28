@@ -17,19 +17,33 @@
                 config-drilling action)
             </small>
         </h1>
+        
+        <form id="input-form">
+            <article class="control-group">
+                <label for="method">App: </label>
+                <select id="method" name="method"></select>
+            </article>
 
-        <label for="encrypted-file-selector">Your .hc file goes here -></label>
-        <input type="file" id="encrypted-file-selector">
+            <article class="control-group">
+                <label for="file">File to decrypt: </label>
+                <input type="file" name="file"><br>
+            </article>
+
+            <article class="control-group">
+                <button type="submit">Decrypt</button>
+            </article>
+        </form>
 
         <p>
             As soon as you upload the file, it'll start decrypting automatically.<br>
             When it's done decrypting, you'll see the <i>result</i> below.
         </p>
 
-        <h2>Result</h2>
-        <code id="decryption-result">
-            Upload a file to see something here!
-        </code>
+        <article id="result-section">
+            <h2>Result</h2>
+            <code id="decryption-result">
+            </code>
+        </article>
     </main>
 
     <script src="src/index.ts"></script>

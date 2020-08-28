@@ -1,18 +1,23 @@
-import UTF8 from 'crypto-js/enc-utf8';
-import Hex from 'crypto-js/enc-hex';
+import decryptHTTPCustom from './methods/http-custom';
 
-import SHA1 from 'crypto-js/sha1';
+interface DecryptionMethod {
+    humanName: string,
+    func: (file: File) => Promise<string>,
+}
 
-import AES from 'crypto-js/aes';
-import ECB from 'crypto-js/mode-ecb';
+export const decryptionMethods: Record<string, DecryptionMethod> = { 
+    httpCustom: { humanName: 'HTTP Custom', func: decryptHTTPCustom } 
+}
 
-export default function (contents: string, key: string): string {
-    // make a decryption key (multiplying 16 * 2 was required because it's impossible to
-    // splice WordArrays for some reason)
-    const decryptionKey = Hex.parse(SHA1(key).toString(Hex).substr(0, 16 * 2));
+export function fillSelectWithMethods(elem: HTMLSelectElement): HTMLSelectElement {
+    for(const methodID in decryptionMethods) {
+        const optionElem = document.createElement('option');
 
-    // decrypt the file and return the result
-    return AES.decrypt(
-        contents, decryptionKey, { mode: ECB }
-    ).toString(UTF8);
+        optionElem.innerText = decryptionMethods[methodID].humanName;
+        optionElem.value = methodID;
+
+        elem.appendChild(optionElem);
+    }
+
+    return elem;
 }
