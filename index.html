@@ -12,32 +12,35 @@
         <h1>
             hcdrill
         </h1>
+
+        <noscript>
+            You need to enable JavaScript in order for this website to work.
+        </noscript>
         
-        <form id="input-form">
-            <article class="control-group">
-                <label for="method">App: </label>
-                <select id="method" name="method"></select>
-            </article>
+        <article class="screen" id="js-loading-screen">
+            Loading... (if this does not go away after a minute, reload the page)
+        </article>
 
-            <article class="control-group">
-                <label for="file">File to decrypt: </label>
-                <input type="file" name="file"><br>
-            </article>
+        <article class="screen hidden" id="input-screen">
+            <form id="input-form">
+                <section class="control-group">
+                    <label for="method">App: </label>
+                    <select id="method" name="method"></select>
+                </section>
 
-            <article class="control-group">
-                <button type="submit">Decrypt</button>
-            </article>
-        </form>
+                <section class="control-group">
+                    <label for="file">File to decrypt: </label>
+                    <input type="file" name="file"><br>
+                </section>
 
-        <p>
-            As soon as you upload the file, it'll start decrypting automatically.<br>
-            When it's done decrypting, you'll see the <i>result</i> below.
-        </p>
+                <section class="control-group">
+                    <button type="submit">Decrypt</button>
+                </section>
+            </form>
+        </article>
 
-        <article id="result-section">
-            <h2>Result</h2>
-            <code id="decryption-result">
-            </code>
+        <article class="screen hidden" id="result-screen">
+            <code id="decryption-result"></code>
         </article>
     </main>
 

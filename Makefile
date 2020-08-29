@@ -22,15 +22,15 @@ endif
 endif
 
 # rule to install dependencies
-node_modules: node_and_pnpm
+node_modules:
 	pnpm install
 
 # build the project
-build: clean node_modules
+build: node_and_pnpm node_modules clean
 	parcel build index.html
 
 # serve the project
-serve: clean node_modules
+serve: node_and_pnpm node_modules clean
 	parcel index.html
 
 # clean the project

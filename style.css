@@ -1,25 +1,71 @@
+/* define some colors and fonts */
 body {
     --foreground: #1DE9B6;
     --foreground-error: #FF1744;
 
-    background: #263238;
+    --background: #263238;
+
+    --font: monospace;
+
+    background: var(--background);
     color: var(--foreground);
 
-    font-family: monospace;
+    font-family: var(--font);
 }
 
+/* center the page */
 main {
     margin: 0 auto;
     margin-top: 5em;
     width: 50%;
 }
 
+/* hide a screen by default */
+.hidden {
+    display: none;
+}
+
+/* make the link color more vivid */
 a:visited {
     color: #AA00FF;
 }
 
+/* give controls some padding */
 .control-group {
     margin: 1em 1em 1em 0;
+}
+
+/* speaking of controls */
+button {
+    appearance: none;
+
+    border: 0;
+    background: var(--foreground);
+    color: var(--background);
+
+    padding: 0.5em 1.25em 0.5em 1.25em;
+
+    font-family: var(--font);
+
+    border-radius: 2px;
+}
+
+select {
+    appearance: none;
+
+    border: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M7 10l5 5 5-5z" fill="%23263238"/></svg>'), var(--foreground);
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: center;
+    color: var(--background);
+
+    padding: 0.25em;
+    padding-right: 2em;
+
+    font-family: var(--font);
+
+    border-radius: 2px;
 }
 
 #decryption-result {

@@ -2,7 +2,9 @@ dependencies:
   '@types/crypto-js': 3.1.47
   crypto-js: 4.0.0
 devDependencies:
+  '@types/node-forge': 0.9.5
   cssnano: 4.1.10
+  node-forge: 0.9.1
   parcel-bundler: 1.12.4
   typescript: 4.0.2
 lockfileVersion: 5.1
@@ -1055,6 +1057,16 @@ packages:
     dev: false
     resolution:
       integrity: sha512-eI6gvpcGHLk3dAuHYnRCAjX+41gMv1nz/VP55wAe5HtmAKDOoPSfr3f6vkMc08ov1S0NsjvUBxDtHHxqQY1LGA==
+  /@types/node-forge/0.9.5:
+    dependencies:
+      '@types/node': 14.6.1
+    dev: true
+    resolution:
+      integrity: sha512-rrN3xfA/oZIzwOnO3d2wRQz7UdeVkmMMPjWUCfpPTPuKFVb3D6G10LuiVHYYmvrivBBLMx4m0P/FICoDbNZUMA==
+  /@types/node/14.6.1:
+    dev: true
+    resolution:
+      integrity: sha512-HnYlg/BRF8uC1FyKRFZwRaCPTPYKa+6I8QiUZFLredaGOou481cgFS4wKRFyKvQtX8xudqkSdBczJHIYSQYKrQ==
   /@types/q/1.5.4:
     dev: true
     resolution:
@@ -3430,6 +3442,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-sol30LUpz1jQFBjOKwbjxijiE3b6pjd74YwfD0fJOKPjF+fONKb2Yg8rYgS6+bK6VDl+/wfr4IYpC7jDzLUIfw==
+  /node-forge/0.9.1:
+    dev: true
+    engines:
+      node: '>= 4.5.0'
+    resolution:
+      integrity: sha512-G6RlQt5Sb4GMBzXvhfkeFmbqR6MzhtnT7VTHuLadjkii3rdYHNdw0m8zA4BTxVIh68FicCQ2NSUANpsqkr9jvQ==
   /node-libs-browser/2.2.1:
     dependencies:
       assert: 1.5.0
@@ -5311,7 +5329,9 @@ packages:
       integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 specifiers:
   '@types/crypto-js': ^3.1.47
+  '@types/node-forge': ^0.9.5
   crypto-js: ^4.0.0
   cssnano: ^4.1.10
+  node-forge: ^0.9.1
   parcel-bundler: ^1.12.4
   typescript: ^4.0.2

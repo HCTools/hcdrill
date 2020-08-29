@@ -1,5 +1,7 @@
 import { decryptionMethods, fillSelectWithMethods } from './decrypt';
 
+import { switchToScreen } from './ui';
+
 const form = document.getElementById('input-form') as HTMLFormElement;
 const resultBox = document.getElementById('decryption-result');
 
@@ -15,12 +17,16 @@ form.onsubmit = function(event: Event) {
 
     resultBox.style.color = 'var(--foreground)';
 
-    method.func(file)
+    method.decrypt(file)
         .then((decryptedFile: string) => resultBox.innerText = decryptedFile)
         .catch((err: Error) => {
             resultBox.style.color = 'var(--foreground-error)';
             resultBox.innerText = err.message;
         });
+
+    switchToScreen('result-screen');
 }
 
-fillSelectWithMethods(methodSelect);
+fillSelectWithMethods(methodSelect, decryptionMethods);
+
+switchToScreen('input-screen');

@@ -1,15 +1,19 @@
-import decryptHTTPCustom from './methods/http-custom';
+import HTTPCustom from './methods/http-custom';
+// import decryptTunneltweak from './methods/tunneltweak';
 
-interface DecryptionMethod {
-    humanName: string,
-    func: (file: File) => Promise<string>,
+export interface IMetadata {
+    humanName: string
 }
 
-export const decryptionMethods: Record<string, DecryptionMethod> = { 
-    httpCustom: { humanName: 'HTTP Custom', func: decryptHTTPCustom } 
+export interface IDecrypt extends IMetadata {
+    decrypt: (file: File) => Promise<string>,
 }
 
-export function fillSelectWithMethods(elem: HTMLSelectElement): HTMLSelectElement {
+export const decryptionMethods: IDecrypt[] = [
+    HTTPCustom,
+];
+
+export function fillSelectWithMethods(elem: HTMLSelectElement, methods: IDecrypt[]): HTMLSelectElement {
     for(const methodID in decryptionMethods) {
         const optionElem = document.createElement('option');
 

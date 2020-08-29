@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "lib": ["ES2020", "DOM"],
+        "resolveJsonModule": true,
+        "esModuleInterop": true
+    }
+}

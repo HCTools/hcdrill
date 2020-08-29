@@ -37,40 +37,44 @@ function decryptFileWithKey(contents: string, key: string): string {
     ).toString(UTF8);
 }
 
-export default async function (file: File): Promise<string> {
-    const encryptedContents = await file.text();
+export default {
+    humanName: 'HTTP Custom',
 
-    // deobfuscate the contents
-    const deobfuscatedContents = deobfuscate(encryptedContents);
-
-    // pick a key for the file and try to decrypt it
-    const decryptedContents = keyList.reduce<string>(
-        (prevSuccsessfulAttempt: string, key: [string, boolean], idx: number): string => {
-            // decide what contents should we use
-            let contents = key[1] ? deobfuscatedContents : encryptedContents;
-            let decryptedContents: string;
-
-            try {
-                // try to decrypt the contents
-                // (this will fail with a UTF-8 decode error if the key is invalid)
-                decryptedContents = decryptFileWithKey(contents, key[0]);
-            } catch (err) {
-                if(err.message.match(/^Malformed .* data$/)) {
-                    return prevSuccsessfulAttempt;
+    async decrypt(file: File): Promise<string> {
+        const encryptedContents = await file.text();
+    
+        // deobfuscate the contents
+        const deobfuscatedContents = deobfuscate(encryptedContents);
+    
+        // pick a key for the file and try to decrypt it
+        const decryptedContents = keyList.reduce<string>(
+            (prevSuccsessfulAttempt: string, key: [string, boolean], idx: number): string => {
+                // decide what contents should we use
+                let contents = key[1] ? deobfuscatedContents : encryptedContents;
+                let decryptedContents: string;
+    
+                try {
+                    // try to decrypt the contents
+                    // (this will fail with a UTF-8 decode error if the key is invalid)
+                    decryptedContents = decryptFileWithKey(contents, key[0]);
+                } catch (err) {
+                    if(err.message.match(/^Malformed .* data$/)) {
+                        return prevSuccsessfulAttempt;
+                    }
+                    
+                    throw err;
                 }
                 
-                throw err;
-            }
-            
-            return decryptedContents;
-        }, 
-    noDice);
-
-    // if NONE of the keys worked
-    if(decryptedContents === noDice) {
-        // error out
-        throw new Error('Decryption failed. Maybe it\'s encrypted in a way that is\'nt yet supported.');
-    }
-
-    return decryptedContents;
+                return decryptedContents;
+            }, 
+        noDice);
+    
+        // if NONE of the keys worked
+        if(decryptedContents === noDice) {
+            // error out
+            throw new Error('Decryption failed. Maybe it\'s encrypted in a way that is\'nt yet supported.');
+        }
+    
+        return decryptedContents;
+    }    
 }
