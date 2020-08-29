@@ -1,6 +1,7 @@
-import { decryptionMethods, fillSelectWithMethods } from './decrypt';
+import { decryptionMethods } from './methods';
 
 import { switchToScreen } from './ui';
+import { recordsToHTMLTableRows } from './ui/table';
 
 const form = document.getElementById('input-form') as HTMLFormElement;
 const resultBox = document.getElementById('decryption-result');
@@ -27,6 +28,6 @@ form.onsubmit = function(event: Event) {
     switchToScreen('result-screen');
 }
 
-fillSelectWithMethods(methodSelect, decryptionMethods);
+// fillSelectWithMethods(methodSelect, decryptionMethods);
 
 switchToScreen('input-screen');

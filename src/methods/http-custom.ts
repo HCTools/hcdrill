@@ -8,7 +8,7 @@ import ECB from 'crypto-js/mode-ecb';
 
 import keyList from './http-custom-keys.json';
 
-const xorList: string[] = [
+const xorList = [
     '。', '〃', '〄', '々', '〆', '〇', '〈', '〉', '《', '》', 
     '「', '」', '『', '』', '【', '】', '〒', '〓', '〔', '〕'
 ];
@@ -76,5 +76,5 @@ export default {
         }
     
         return decryptedContents;
-    }    
+    }
 }
