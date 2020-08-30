@@ -10,3 +10,9 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install -g pnpm
       - run: make
+      - uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
+          REPOSITORY_NAME: hctools/hctools.github.io
