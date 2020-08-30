@@ -1,4 +1,4 @@
-import UTF8 from 'crypto-js/enc-utf8';
+import UTF8, { parse } from 'crypto-js/enc-utf8';
 import Hex from 'crypto-js/enc-hex';
 
 import SHA1 from 'crypto-js/sha1';
@@ -14,6 +14,29 @@ const xorList = [
 ];
 
 const noDice = 'NO DICE';
+
+const zip = (ks, vs) => ks.reduce((acc, k, i) => (acc[k] = vs[i], acc), {});
+
+const schema = [
+    'payloadURL',
+    'payloadProxyURL',
+    'blockRoot',
+    'lockPayloadAndServers',
+    'expiryDate',
+    'hasNotes',
+    'noteField1',
+    'sshAddress',
+    'onlyMobileData',
+    'unlockProxy',
+    'unknown',
+    'vpnAddress',
+    'sslSNI',
+    'shouldConnectViaSSH',
+    'lockPayload',
+    'udpgwPort',
+    'hasHWID',
+    'hwid'
+];
 
 function deobfuscate(contents: string): string {
     const obfuscatedContents = contents.split('')
@@ -76,5 +99,30 @@ export default {
         }
     
         return decryptedContents;
+    },
+
+    async parse(contents: string): Promise<Record<string, any>> {
+        const splitContents = contents.split('[splitConfig]');
+        const rawMap = zip(schema, splitContents);
+
+        return {
+            'connectionType': rawMap['shouldConnectViaSSH'] ? 'SSH' : 'VPN',
+            'address': rawMap['shouldConnectViaSSH'] === 'true' ? rawMap['sshAddress'] : rawMap['vpnAddress'],
+
+            'payload': {
+                'url': rawMap['payloadURL'],
+                'proxyURL': rawMap['payloadProxyURL']
+            },
+
+            'sslSNI': rawMap['sslSNI'],
+
+            'notes': {
+                1: rawMap['noteField1'], 
+                2: rawMap['noteField2']
+            },
+
+            'expiryDate': rawMap['expiryDate'],
+            'blockRoot': rawMap['blockRoot'],
+        };
     }
 }
