@@ -7,9 +7,14 @@ export interface MetadataInterface {
 
 export interface DecryptInteface {
     decrypt: (File) => Promise<string>,
-    parse?: (string) => Promise<string>,
 }
 
-export const decryptionMethods: DecryptInteface[] = [
+export interface ParseInterface {
+    parse?: (string) => Promise<Record<string, any>>,
+}
+
+type DecodeInterface = MetadataInterface & DecryptInteface & ParseInterface;
+
+export const decryptionMethods: DecodeInterface[] = [
     HTTPCustom,
 ];
